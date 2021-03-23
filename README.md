@@ -1,27 +1,76 @@
-# StrFinalExam
+# Training360 - Angular Záróvizsga Feladatok
+Az alábbi dokumentum a záróvizsga gyakorlati feladatait tartalmazza, frontend
+szakirány esetén.
+Bevezetés
+A feladatokat egy már előre elkészített környezetben kell megoldani. Ez az
+alkalmazás felhasználók adatait kezeli. A felhasználók listázását, és a hozzá
+kapcsolódó osztályokat és szolgáltatásokat készen tartalmazza az alap-alkalmazás.
+A feladat hat darab jól elkülönülő funkció elkészítése az alap-alkalmazásra épülően.
+Beadás
+A kész feladatot 2021-03-16 23:00 -ig kell beadni ezen az űrlapon. Itt fel kell tüntetni
+a személyes adatokat és a feladat elérhetőségét is. Csak a határidőig beérkező
+feladatokat tudjuk értékelni.
+Űrlap linkje: https://forms.office.com/r/WE3vWyryZM
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.7.
+Feltételek
+A feladatok elvégzéséhez az alábbi feltételek és programok megléte szükséges:
+1. PC stabil internet kapcsolattal.
+2. Legalább 8GB RAM.
+3. Legalább 2 magos CPU.
+4. Telepített Git kliens.
+5. Telepített Visual Studio Code alkalmazás.
+6. Telepített NodeJS futtatókörnyezet, NPM csomagkezelővel.
 
-## Development server
+## Kezdő lépések
+1. Telepítsd a prog-teacher csomagot a parancssorban: `npm i -g prog-teacher`
+2. Töltsd le a alap-alkalmazást: `prog-teacher str-final-exam`
+3. Hozz létre egy Github repozitorit a saját fiókodban, a neve legyen: `str-finalexam`
+4. Lépj be a mappába: `cd str-final-exam`
+5. Állítsd be a VSCode gyökerének az aktuális mappát: `code . -r`
+6. Telepítsd a függőségeket: `npm i`
+7. Állítsd be a Github repozitorid távoli forrásnak:
+`git init`
+`git add .`
+`git commit -m "first commit"`
+`git branch -M main`
+`git remote add origin https://github.com/<username>/str-final-exam.git` 
+`git push -u origin main`
+Figyelem: a username helyére a te github fiókod neve kerül.
+8. Indítsd el a json-server -t és az Anagular dev-server -t:
+`json-server .\server\db.json --watch`
+`npm start`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Feladatok
 
-## Code scaffolding
+### 1. A megjelenő táblázatban készítsd el a törlés funkcionalitást!
+ok - A törlés gombra kattintva a példa adatbázisból törlődjön az adott rekord.
+ok - Törlés előtt jelenjen meg egy megerősítő kérdés.
+ok - A törléshez a UserService osztályban is hozd létre a szükséges metódust.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 2. Tedd szűrhetővé a táblázatban megjelenő adatokat!
+ok - A táblázat felett hozz létre egy beviteli mezőt.
+ok - A beviteli mező értékének módosítása esetén a táblázat azon rekordjai maradjanak láthatóak, amelyek `name` mezője részben vagy egészben tartalmazza a beviteli mezőbe gépelt szöveget.
 
-## Build
+### 3. Tedd rendezhetővé a táblázatban megjelenő adatokat!
+ok - Ha a felhasználó a táblázat fejléceire kattint, akkor a megjelenő rekordok rendeződjenek az adott oszlop szerint növekvő sorrendbe.
+ok - Ha egy másik oszlop fejlécére kattint, akkor pedig a szerint az oszlop szerint, amelyre utoljára kattintottak.
+ok - Csak növekvő sorrendbe kell rendezni!
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### 4. Tedd módosíthatóvá a táblázatban megjelenő rekordokat!
+ok - A táblázat sorainak utolsó cellájában lévő szerkesztés gombra kattintva jelenleg megjelenik a szerkesztő oldal.
+ok - Az oldalon már létre vannak hozva a beviteli mezők.
+ok - Ha a mentés gombra kattint a felhasználó, akkor az adatbázisban kerüljenek frissítésre az adott rekord adatai.
+ok - A módosításhoz a UserService osztályban is hozd létre a szükséges metódust.
 
-## Running unit tests
+### 5. Validáld az adatokat a szerkesztő űrlapon!
+ok - Minden input elem előtt kommentben feltüntettük a validálás szabályait.
+ok - Attribútumok és reguláris kifejezések használatával validáld a mezőkbe írt adatokat!
+ok - Ha nem megfelelő az adat, akkor jelenjen meg releváns hibaüzenet közvetlenül a hibás adatot tartalmazó mező alatt!
+ok - Ha az űrlap bármely mezője hibás adatot tartalmaz, a mentés gomb legyen letiltva és ne legyen az űrlap elküldhető!
+ok - Sikeres módosítás után navigáljon vissza az alkalmazás a táblázathoz.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### 6. Tedd lehetővé új rekord rögzítését!
+ok - Hozz létre egy teljes szélességű gombot a lista oldalon a táblázat felett, amelyre kattintva szintén a szerkesztő űrlap jelenik meg, de üres állapotban.
+ok - Az adatbevitel során ugyanazok a validációs szabályok legyenek érvényesek, mint a szerkesztés esetén.
+ok - Megfelelő kitöltés után a mentés gombra kattintva történjen meg az új rekord beszúrása az adatbázisba és navigáljon vissza az oldal a táblázathoz.
+ok - A beszúráshoz a UserService osztályban is hozd létre a szükséges metódusokat. 
